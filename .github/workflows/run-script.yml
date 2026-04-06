@@ -1,0 +1,22 @@
+name: Run Python python_script
+
+on:
+  push:              # runs when you push code
+    branches: [ main ]
+  workflow_dispatch: # allows manual run
+
+jobs:
+  run-python:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run Python script
+        run: python script.py
